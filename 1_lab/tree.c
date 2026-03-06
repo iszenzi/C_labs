@@ -82,12 +82,11 @@ node *delete_node(node *root, int data)
 
 node *find_min_node(node *root)
 {
-    int min = 10 ^ 10;
     while (root->left != NULL)
     {
         root = root->left;
     }
-    return root->data;
+    return root;
 }
 void tree_free(node *root)
 {

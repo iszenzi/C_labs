@@ -19,7 +19,7 @@ void tree_free(node *root);
 
 void tree_print(node *root, int depth);
 
-node *deleate_node(node *root, int data);
+node *delete_node(node *root, int data);
 
 node *find_min_node(node *root);
 
