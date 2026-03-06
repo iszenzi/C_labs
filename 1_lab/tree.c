@@ -82,6 +82,10 @@ node *delete_node(node *root, int data)
 
 node *find_min_node(node *root)
 {
+    if (!root)
+    {
+        return NULL;
+    }
     while (root->left != NULL)
     {
         root = root->left;
