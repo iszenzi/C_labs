@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
-#include "tree.c"
-
+// спросить про импортирование файлов
 void print_menu()
 {
     printf("Menu:\n");
