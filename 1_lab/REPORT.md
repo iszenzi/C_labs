@@ -35,37 +35,77 @@ mingw32-make
 ## Пример работы:
 
 ```
-         Menu:
-	     1. Insert node
-	     2. Print tree
-	     3. Exit
-	     Enter command 1
-	     Enter data 22
-         Menu:
-	     1. Insert node
-	     2. Print tree
-	     3. Exit
-	     Enter command 1
-	     Enter data 23
-         Menu:
-	     1. Insert node
-	     2. Print tree
-	     3. Exit
-	     Enter command 1
-	     Enter data 14
-         Menu:
-	     1. Insert node
-	     2. Print tree
-	     3. Exit
-	     Enter command 2
-	     22
-		     14
-		     23
-	     Menu:
-	     1. Insert node
-	     2. Print tree
-	     3. Exit
-	     Enter command 3
+    Menu:
+    1. Insert node
+    2. Print tree 
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 1
+    Enter data 22
+    Menu:
+    1. Insert node
+    2. Print tree
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 1
+    Enter data 23
+    Menu:
+    1. Insert node
+    2. Print tree
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 1
+    Enter data 14
+    Menu:
+    1. Insert node
+    2. Print tree
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 2
+    22
+            14
+            23
+    Menu:
+    1. Insert node
+    2. Print tree
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 4
+    Enter lower border 1
+    Enter upper border 100
+    ALL leaves in range [1, 100]
+    Menu:
+    1. Insert node
+    2. Print tree
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 2
+    22
+            14
+            23
+    Menu:
+    1. Insert node
+    2. Print tree
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 4
+    Enter lower border 15
+    Enter upper border 16
+    NOT ALL leaves in range [15, 16]
+    Menu:
+    1. Insert node
+    2. Print tree
+    3. Delete node
+    4. Check range
+    5. Exit
+    Enter command 5
 ```
 
-Этот пример демонстрирует добавление узлов , визуализацию дерева и выход.
+Этот пример демонстрирует добавление узлов, визуализацию дерева, удачную и неудачную проверку листьев, выход.
