@@ -35,25 +35,25 @@ mingw32-make
 ## Пример работы:
 
 ```
-1            Menu:
+         Menu:
 	     1. Insert node
 	     2. Print tree
 	     3. Exit
 	     Enter command 1
 	     Enter data 22
-1            Menu:
+         Menu:
 	     1. Insert node
 	     2. Print tree
 	     3. Exit
 	     Enter command 1
 	     Enter data 23
-1            Menu:
+         Menu:
 	     1. Insert node
 	     2. Print tree
 	     3. Exit
 	     Enter command 1
 	     Enter data 14
-2            Menu:
+         Menu:
 	     1. Insert node
 	     2. Print tree
 	     3. Exit
