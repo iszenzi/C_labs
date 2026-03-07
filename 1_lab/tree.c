@@ -55,6 +55,7 @@ node *delete_node(node *root, int data)
         if (!root->left && !root->right)
         {
             free(root);
+            printf("Node %d deleted\n", data);
             return NULL;
         }
         else if (root->left != NULL && root->right != NULL)
@@ -75,6 +76,7 @@ node *delete_node(node *root, int data)
                 a = root->left;
             }
             free(root);
+            printf("Node %d deleted\n", data);
             return a;
         }
     }
