@@ -23,3 +23,49 @@
 |    ├── tree.c              # Реализация функций дерева
 |    ├── tree.h              # Структура узла и прототипы функций
 </pre>
+
+## Запуск
+
+Сборка и запуск (в каталоге `1_lab`):
+
+```
+mingw32-make
+```
+
+## Пример работы:
+
+```
+1            Menu:
+	     1. Insert node
+	     2. Print tree
+	     3. Exit
+	     Enter command 1
+	     Enter data 22
+1            Menu:
+	     1. Insert node
+	     2. Print tree
+	     3. Exit
+	     Enter command 1
+	     Enter data 23
+1            Menu:
+	     1. Insert node
+	     2. Print tree
+	     3. Exit
+	     Enter command 1
+	     Enter data 14
+2            Menu:
+	     1. Insert node
+	     2. Print tree
+	     3. Exit
+	     Enter command 2
+	     22
+		     14
+		     23
+	     Menu:
+	     1. Insert node
+	     2. Print tree
+	     3. Exit
+	     Enter command 3
+```
+
+Этот пример демонстрирует добавление узлов , визуализацию дерева и выход.
