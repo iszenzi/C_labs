@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "tree.h"
 
 node *create_node(int data)
@@ -118,4 +119,29 @@ void tree_print(node *root, int depth)
 
     tree_print(root->left, depth + 1);
     tree_print(root->right, depth + 1);
+}
+
+bool check_range(node *root, int min, int max)
+{
+    if (!root)
+    {
+        return true;
+    }
+    else if (!root->left && !root->right)
+    {
+        if (root->data <= max && root->data >= min)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        bool result_l = check_range(root->left, min, max);
+        bool result_r = check_range(root->right, min, max);
+        return (result_l && result_r);
+    }
 }

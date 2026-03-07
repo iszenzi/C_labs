@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct node
 {
@@ -22,5 +23,7 @@ void tree_print(node *root, int depth);
 node *delete_node(node *root, int data);
 
 node *find_min_node(node *root);
+
+bool check_range(node *root, int min, int max)
 
 #endif
