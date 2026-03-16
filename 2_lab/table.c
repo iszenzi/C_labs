@@ -136,3 +136,40 @@ void shell_sort(MyStruct *table, int size)
         }
     }
 }
+
+int binary_search(const MyStruct *table, int size, double key)
+{
+    int left = 0;
+    int right = size - 1;
+
+    while (left <= right)
+    {
+        int mid = left + (right - left) / 2;
+        double mid_key = table[mid].key;
+
+        if (mid_key == key)
+        {
+            return mid;
+        }
+        if (mid_key < key)
+        {
+            left = mid + 1;
+        }
+        else
+        {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+void print_table(const MyStruct *table, int size)
+{
+    int i;
+
+    for (i = 0; i < size; i++)
+    {
+        printf("%d %.3f %s\n", i, table[i].key, table[i].value ? table[i].value : "");
+    }
+}
