@@ -20,11 +20,11 @@ char *read_line(FILE *file)
 {
     size_t capacity = 16;
     size_t length = 0;
+    int ch;
     char *buffer = (char *)malloc(capacity);
     if (!buffer)
         return NULL;
 
-    int ch;
     while ((ch = fgetc(file)) != '\n' && ch != '\r' && ch != EOF)
     {
         buffer[length++] = (char)ch;
@@ -53,6 +53,10 @@ char *read_line(FILE *file)
 
 int read_table(MyStruct *table, int limit, const char *filename)
 {
+    int n;
+    int c;
+    int count;
+    int i;
     FILE *file = fopen(filename, "r");
     if (!file)
     {
@@ -60,7 +64,6 @@ int read_table(MyStruct *table, int limit, const char *filename)
         return 0;
     }
 
-    int n;
     if (fscanf(file, "%d", &n) != 1)
     {
         printf("Error: Cannot read size\n");
@@ -68,22 +71,21 @@ int read_table(MyStruct *table, int limit, const char *filename)
         return 0;
     }
 
-    int c;
     while ((c = fgetc(file)) != '\n' && c != EOF)
         ;
 
     if (n > limit)
         n = limit;
 
-    int count = 0;
-    for (int i = 0; i < n; ++i)
+    count = 0;
+    for (i = 0; i < n; ++i)
     {
         if (fscanf(file, "%lf", &table[i].key) != 1)
         {
             break;
         }
 
-        int c = fgetc(file);
+        c = fgetc(file);
         while (c == ' ' || c == '\t')
         {
             c = fgetc(file);
@@ -105,4 +107,32 @@ int read_table(MyStruct *table, int limit, const char *filename)
 
     fclose(file);
     return count;
+}
+
+void swap(MyStruct *a, MyStruct *b)
+{
+    MyStruct temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void shell_sort(MyStruct *table, int size)
+{
+    int gap, i, j;
+    MyStruct current;
+
+    for (gap = size / 2; gap > 0; gap /= 2)
+    {
+        for (i = gap; i < size; i++)
+        {
+            current = table[i];
+            j = i;
+            while (j >= gap && table[j - gap].key > current.key)
+            {
+                table[j] = table[j - gap];
+                j -= gap;
+            }
+            table[j] = current;
+        }
+    }
 }
