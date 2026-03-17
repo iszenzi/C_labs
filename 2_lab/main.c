@@ -4,9 +4,13 @@
 
 #define MAX_RECORDS 100
 
-void print_menu()
+void print_menu(const char *current_file)
 {
     printf("Menu:\n");
+    if (current_file && current_file[0] != '\0')
+        printf("Current file: %s\n", current_file);
+    else
+        printf("Current file: (none)\n");
     printf("1. Load table from file\n");
     printf("2. Print table\n");
     printf("3. Shell sort\n");
@@ -20,9 +24,11 @@ int main()
     int size = 0;
     int command;
 
+    char *current_file = NULL;
+
     while (1)
     {
-        print_menu();
+        print_menu(current_file);
         printf("Enter command ");
         if (scanf("%d", &command) != 1)
         {
@@ -61,6 +67,12 @@ int main()
             {
                 printf("ERROR: Less than 15 elements (%d)\n", size);
             }
+            else
+            {
+                if (current_file)
+                    free(current_file);
+                current_file = strdup(filename);
+            }
             break;
         }
         case 2:
@@ -80,8 +92,11 @@ int main()
             }
             else
             {
+                printf("Before sort:\n");
+                print_table(table, size);
                 shell_sort(table, size);
-                printf("Sorted\n");
+                printf("After sort:\n");
+                print_table(table, size);
             }
             break;
         case 4:
@@ -99,7 +114,7 @@ int main()
                 index = binary_search(table, size, key);
                 if (index >= 0)
                 {
-                    printf("Found: %.3f %s\n", table[index].key,
+                    printf("Found: %f %s\n", table[index].key,
                            table[index].value ? table[index].value : "");
                 }
                 else
@@ -113,6 +128,8 @@ int main()
             {
                 free_table(table, size);
             }
+            if (current_file)
+                free(current_file);
             exit(0);
         default:
             printf("Invalid command\n");

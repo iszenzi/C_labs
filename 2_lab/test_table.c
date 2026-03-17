@@ -39,6 +39,7 @@ void test1_shell_sort_random()
     assert_sorted(t, n);
     free_table(t, n);
 }
+
 void test2_shell_sort_reverse()
 {
     int n = 24;
