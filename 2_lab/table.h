@@ -18,6 +18,5 @@ int read_table(MyStruct *table, int limit, const char *filename);
 void print_table(const MyStruct *table, int size);
 void shell_sort(MyStruct *table, int size);
 int binary_search(const MyStruct *table, int size, double key);
-void swap(MyStruct *a, MyStruct *b);
 
 #endif

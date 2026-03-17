@@ -109,13 +109,6 @@ int read_table(MyStruct *table, int limit, const char *filename)
     return count;
 }
 
-void swap(MyStruct *a, MyStruct *b)
-{
-    MyStruct temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 void shell_sort(MyStruct *table, int size)
 {
     int gap, i, j;
