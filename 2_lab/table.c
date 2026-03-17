@@ -170,6 +170,6 @@ void print_table(const MyStruct *table, int size)
 
     for (i = 0; i < size; i++)
     {
-        printf("%d %f %s\n", i + 1, table[i].key, table[i].value ? table[i].value : "");
+        printf("%d %g %s\n", i + 1, table[i].key, table[i].value ? table[i].value : "");
     }
 }

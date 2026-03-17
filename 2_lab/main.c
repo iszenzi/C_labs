@@ -114,7 +114,7 @@ int main()
                 index = binary_search(table, size, key);
                 if (index >= 0)
                 {
-                    printf("Found: %f %s\n", table[index].key,
+                    printf("Found: %g %s\n", table[index].key,
                            table[index].value ? table[index].value : "");
                 }
                 else
