@@ -6,8 +6,6 @@
 #include <string.h>
 #include <math.h>
 
-#define MAX_STR_LEN 256
-
 typedef struct
 {
     double key;
