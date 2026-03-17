@@ -11,9 +11,16 @@ main.o: main.c table.h
 
 run_main: main.exe
 	./main.exe
+run_test: test_table.exe
+	./test_table.exe
+test_table.exe: test_table.o table.o
+	gcc test_table.o table.o -o test_table.exe
+
+test_table.o: test_table.c table.h
+	gcc -c test_table.c -o test_table.o
 
 build: main.exe
 	@echo "The assembly is completed"
 
 clean:
-	del /Q *.o main.exe
+	del /Q *.o main.exe test_table.exe
