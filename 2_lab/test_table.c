@@ -91,7 +91,7 @@ void test4_binary_search()
     free_table(t, n);
 }
 
-void test5_file_io_simple()
+void test5_file()
 {
     MyStruct *table = calloc(15, sizeof(MyStruct));
     assert(table != NULL);
@@ -119,7 +119,7 @@ bool all_tests()
     printf("Test 3 complete\n");
     test4_binary_search();
     printf("Test 4 complete\n");
-    test5_file_io_simple();
+    test5_file();
     printf("Test 5 complete\n");
     return true;
 }
