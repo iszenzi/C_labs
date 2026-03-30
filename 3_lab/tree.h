@@ -30,6 +30,7 @@ typedef struct expr_node
 expr_node *create_num_node(int num);
 expr_node *create_var_node(char var);
 expr_node *create_op_node(char op, expr_node *left, expr_node *right);
+
 void free_tree(expr_node *root);
 char *infix_to_rpn(const char *infix);
 expr_node *parse_expression(const char *str);
