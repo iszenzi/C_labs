@@ -38,4 +38,7 @@ void print_infix(expr_node *root);
 void print_tree_visual(expr_node *root, int depth);
 expr_node *reduce_multiplication(expr_node *root);
 
+bool has_variables(expr_node *root);
+double evaluate_tree(expr_node *root);
+
 #endif

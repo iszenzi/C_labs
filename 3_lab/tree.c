@@ -247,6 +247,18 @@ expr_node *reduce_multiplication(expr_node *root)
     if (!root)
         return NULL;
 
+    if (root->type == NODE_OP && !has_variables(root))
+    {
+        double val = evaluate_tree(root);
+        free_tree(root->left);
+        free_tree(root->right);
+        root->type = NODE_NUM;
+        root->data.num = (int)val;
+        root->left = NULL;
+        root->right = NULL;
+        return root;
+    }
+
     root->left = reduce_multiplication(root->left);
     root->right = reduce_multiplication(root->right);
 
@@ -289,28 +301,46 @@ expr_node *reduce_multiplication(expr_node *root)
     return root;
 }
 
-void print_infix(expr_node *root)
+static int get_op_priority(char op)
+{
+    if (op == '+' || op == '-')
+        return 1;
+    if (op == '*' || op == '/')
+        return 2;
+    return 3;
+}
+
+static void print_infix_helper(expr_node *root, int parent_priority)
 {
     if (!root)
         return;
 
     if (root->type == NODE_OP)
     {
+        int my_priority = get_op_priority(root->data.op);
+
         if (root->left == NULL)
         {
             if (root->data.op == '-')
                 printf("-");
             else if (root->data.op == '+')
                 printf("+");
-            print_infix(root->right);
+            print_infix_helper(root->right, my_priority);
         }
         else
         {
-            printf("(");
-            print_infix(root->left);
+            bool need_parens = (my_priority < parent_priority);
+
+            if (need_parens)
+                printf("(");
+
+            print_infix_helper(root->left, my_priority);
             printf(" %c ", root->data.op);
-            print_infix(root->right);
-            printf(")");
+
+            print_infix_helper(root->right, my_priority);
+
+            if (need_parens)
+                printf(")");
         }
     }
     else if (root->type == NODE_VAR)
@@ -321,6 +351,11 @@ void print_infix(expr_node *root)
     {
         printf("%d", root->data.num);
     }
+}
+
+void print_infix(expr_node *root)
+{
+    print_infix_helper(root, 0);
 }
 
 void print_tree_visual(expr_node *root, int depth)
@@ -346,4 +381,50 @@ void print_tree_visual(expr_node *root, int depth)
         printf("%d\n", root->data.num);
 
     print_tree_visual(root->left, depth + 1);
+}
+
+bool has_variables(expr_node *root)
+{
+    if (!root)
+        return false;
+    if (root->type == NODE_VAR)
+        return true;
+    return has_variables(root->left) || has_variables(root->right);
+}
+
+double evaluate_tree(expr_node *root)
+{
+    if (!root)
+        return 0.0;
+
+    if (root->type == NODE_NUM)
+    {
+        return (double)root->data.num;
+    }
+
+    if (root->type == NODE_OP)
+    {
+        double left_val = evaluate_tree(root->left);
+        double right_val = evaluate_tree(root->right);
+
+        switch (root->data.op)
+        {
+        case '+':
+            return left_val + right_val;
+        case '-':
+            if (root->left == NULL)
+                return -right_val;
+            return left_val - right_val;
+        case '*':
+            return left_val * right_val;
+        case '/':
+            if (right_val == 0.0)
+            {
+                printf("ERROR: Division by zero\n");
+                return 0.0;
+            }
+            return left_val / right_val;
+        }
+    }
+    return 0.0;
 }
