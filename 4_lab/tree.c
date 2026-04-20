@@ -56,16 +56,18 @@ static void btree_print_internal(BTreeNode *node, int level)
     if (!node)
         return;
 
-    for (int i = node->keyCount - 1; i >= 0; i--)
-    {
-        if (!node->leaf)
-            btree_print_internal(node->children[i + 1], level + 1);
-        for (int j = 0; j < level; j++)
-            printf("    ");
-        printf("%s: %.2lf\n", node->items[i].key, node->items[i].value);
-    }
+    for (int i = 0; i < level; i++)
+        printf("\t");
+
+    for (int i = 0; i < node->keyCount; i++)
+        printf("[%s: %.2lf] ", node->items[i].key, node->items[i].value);
+    printf("\n");
+
     if (!node->leaf)
-        btree_print_internal(node->children[0], level + 1);
+    {
+        for (int i = 0; i <= node->keyCount; i++)
+            btree_print_internal(node->children[i], level + 1);
+    }
 }
 
 void btree_print(BTreeNode *root)
