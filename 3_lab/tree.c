@@ -67,12 +67,12 @@ static int get_precedence(char op)
 
 char *infix_to_rpn(const char *infix)
 {
-    char *rpn = (char *)malloc(1024);
+    char *rpn = (char *)malloc(strlen(infix));
     if (!rpn)
         return NULL;
 
     int r = 0;
-    char op_stack[512];
+    char op_stack[strlen(infix)];
     int top = -1;
 
     bool expect_operand = true;
