@@ -24,18 +24,12 @@ typedef struct BTreeNode
     bool leaf;
 } BTreeNode;
 
-typedef struct
-{
-    BTreeNode *root;
-} BTree;
-
-BTree *create_tree();
-void free_tree(BTree *tree);
+void free_tree(BTreeNode *root);
 void free_node(BTreeNode *node);
 
-void btree_insert(BTree *tree, const char *key, double value);
-void btree_delete(BTree *tree, const char *key);
-void btree_print(BTree *tree);
-Item *btree_search(BTree *tree, const char *key);
+BTreeNode *btree_insert(BTreeNode *root, const char *key, double value);
+BTreeNode *btree_delete(BTreeNode *root, const char *key);
+void btree_print(BTreeNode *root);
+Item *btree_search(BTreeNode *root, const char *key);
 
 #endif
