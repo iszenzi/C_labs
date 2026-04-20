@@ -24,13 +24,13 @@ void test1_insert_basic()
 void test2_split()
 {
     BTreeNode *root = NULL;
-
     root = btree_insert(root, "a", 1.0);
     root = btree_insert(root, "b", 2.0);
     root = btree_insert(root, "c", 3.0);
     root = btree_insert(root, "d", 4.0);
 
     assert(root != NULL);
+    // b станет корнем
     assert(root->keyCount == 1);
     assert(strcmp(root->items[0].key, "b") == 0);
     assert(root->leaf == false);
@@ -66,6 +66,7 @@ void test4_merge()
 {
     BTreeNode *root = NULL;
 
+    // корень b левый a  правый c,d
     root = btree_insert(root, "a", 1.0);
     root = btree_insert(root, "b", 2.0);
     root = btree_insert(root, "c", 3.0);
@@ -75,6 +76,7 @@ void test4_merge()
 
     root = btree_delete(root, "a");
 
+    // rкорень b,c
     assert(root != NULL);
     assert(root->keyCount == 2);
     assert(strcmp(root->items[0].key, "b") == 0);
