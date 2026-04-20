@@ -1,0 +1,10 @@
+1 apple 10.5
+1 test 20.0
+1 cat 3.14
+1 dog 5.55
+1 bird 9.99
+3
+4 cat
+4 fox
+2 test
+3
