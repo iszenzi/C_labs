@@ -26,6 +26,7 @@ typedef struct BTreeNode
 
 void free_tree(BTreeNode *root);
 void free_node(BTreeNode *node);
+BTreeNode *create_node(bool is_leaf);
 
 BTreeNode *btree_insert(BTreeNode *root, const char *key, double value);
 BTreeNode *btree_delete(BTreeNode *root, const char *key);
