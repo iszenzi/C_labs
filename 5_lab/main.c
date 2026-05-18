@@ -4,7 +4,7 @@
 
 void print_menu()
 {
-    printf("\n--- Prim's Algorithm (Incidence Matrix) ---\n");
+    printf("Menu:\n");
     printf("1. Load graph from file\n");
     printf("2. Calculate MST (Prim)\n");
     printf("3. Save MST to file\n");
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                printf("Failed to build MST.\n");
+                printf("Failed to build MST\n");
             }
             free_graph(graph);
             return 0;
@@ -69,21 +69,21 @@ int main(int argc, char *argv[])
         case 2:
             if (!graph)
             {
-                printf("Please load a graph first.\n");
+                printf("Please load a graph first\n");
                 break;
             }
             if (mst)
                 free_graph(mst);
             mst = prim_mst(graph);
             if (mst && mst->num_edges == graph->num_vertices - 1)
-                printf("MST calculated successfully.\n");
+                printf("MST calculated successfully\n");
             else
-                printf("Failed to calculate full MST (possibly disconnected graph).\n");
+                printf("Failed to calculate full MST (possibly disconnected graph)\n");
             break;
         case 3:
             if (!mst)
             {
-                printf("No MST available. Calculate it first.\n");
+                printf("No MST available. Calculate it first\n");
                 break;
             }
             printf("Enter filename to save MST: ");
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
         case 4:
             if (!graph)
             {
-                printf("No original graph available.\n");
+                printf("No original graph available\n");
                 break;
             }
             printf("Enter filename to save original graph: ");
@@ -107,10 +107,10 @@ int main(int argc, char *argv[])
                 free_graph(graph);
             if (mst)
                 free_graph(mst);
-            printf("Exiting...\n");
+            printf("Exiting\n");
             return 0;
         default:
-            printf("Invalid choice. Try again.\n");
+            printf("Invalid choice. Try again\n");
         }
     }
 
