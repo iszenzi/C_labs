@@ -66,8 +66,6 @@ TEST(PrimTest, DisconnectedGraph)
 
     Graph *mst = prim_mst(g);
 
-    // Поскольку граф несвязный, алгоритм Прима не может найти остовное дерево, содержащее V-1 ребер,
-    // и должен обработать этот случай (в нашей реализации мы прерываем цикл).
     ASSERT_NE(mst, nullptr);
 
     free_graph(mst);
@@ -79,7 +77,6 @@ TEST(GraphTest, NullGraphHandling)
     Graph *mst = prim_mst(nullptr);
     EXPECT_EQ(mst, nullptr);
 
-    // Проверка, что функции не падают при передаче NULL
     add_edge(nullptr, 0, 0, 1, 10);
     free_graph(nullptr);
 }

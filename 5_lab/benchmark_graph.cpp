@@ -8,7 +8,6 @@ extern "C"
 #include "graph.h"
 }
 
-// Генерация случайного графа
 static Graph *create_random_graph(int vertices, int edges)
 {
     Graph *graph = create_graph(vertices, edges);
