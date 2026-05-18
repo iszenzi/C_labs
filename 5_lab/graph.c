@@ -58,6 +58,7 @@ Graph *load_graph_from_file(const char *filename)
     int v, e;
     if (fscanf(file, "%d %d", &v, &e) != 2)
     {
+        printf("Error: Failed to read graph dimensions from %s (Check file format or encoding)\n", filename);
         fclose(file);
         return NULL;
     }

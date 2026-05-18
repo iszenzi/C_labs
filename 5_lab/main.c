@@ -64,7 +64,13 @@ int main(int argc, char *argv[])
                 free_graph(graph);
             graph = load_graph_from_file(filename);
             if (graph)
+            {
                 printf("Graph loaded! Vertices: %d, Edges: %d\n", graph->num_vertices, graph->num_edges);
+            }
+            else
+            {
+                printf("Failed to load graph from %s.\n", filename);
+            }
             break;
         case 2:
             if (!graph)
